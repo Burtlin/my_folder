@@ -54,3 +54,13 @@ def plt_confusion_matrix(cm, classes=None, title='', figsize=(14, 12), fontsize=
     plt.text(0, -0.55, "ACC:" + format(sum(cm.diagonal()) / np.sum(cm)*100, '.2f'), horizontalalignment='center')
 #     plt.text(0, -0.55, "ACC:" + format(sum(cm.diagonal()) / np.sum(cm)*100, '.2f'), horizontalalignment='center')
     return fig
+
+
+if __name__ == '__main__':
+    from sklearn.metrics import confusion_matrix
+    y_actu = [2, 0, 2, 2, 0, 1, 1, 2, 2, 0, 1, 2]
+    y_pred = [0, 0, 2, 1, 0, 2, 1, 0, 2, 0, 2, 2]
+    cm = confusion_matrix(y_actu, y_pred)
+    plt_cm = plt_confusion_matrix(cm, classes=['a', 'b', 'c'], fontsize=20, title='Example')
+    plt.savefig('Example.png')
+    plt.show()
